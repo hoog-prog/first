@@ -8,15 +8,19 @@ function love.load()
 	gui = {}
 	data = {18,11,2019,11,'00'}
 	local pers1 = {'Name','Second',18,3000}
-	
-	local sucsess = love.filesystem.remove("C:\Users\Dmitry_1C\Documents\love\test\test.txt")
+	local cwd = love.filesystem.getSource( )
+	print(cwd)
+	local sucsess = love.filesystem.remove('test.txt')
 	print(sucsess)
-	--[[love.filesystem.newFile('test.txt')
+	love.filesystem.newFile('test.txt')
 	
 	for i = 1, table.getn(data) do
-		love.filesystem.append('test.txt', data[i])
+		love.filesystem.append('test.txt', data[i] .. '\n')
 	end
-	]]
+	for i = 1, table.getn(pers1) do
+		love.filesystem.append('test.txt', pers1[i] .. '\n')
+	end
+	
 	drawData()
 	
 	print(pers1)
